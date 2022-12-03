@@ -6,7 +6,7 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 22:30:38 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/02 23:18:00 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/03 16:15:50 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 char	*ft_convert_p(void *ptr)
 {
-	printf("%d", (int)ptr);
+	// printf("%d", (unsigned int)ptr);
 	if (ptr)
 		return (NULL);
 	return (NULL);
