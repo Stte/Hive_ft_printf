@@ -6,7 +6,7 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:31:47 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/03 00:30:25 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/06 15:12:23 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	ft_printf(const char *str, ...)
 	char	*result;
 	int		i;
 	int		result_len;
+	char	*tmp;
 
 	va_start(args, str);
 	percentage = ft_strchr(str, '%');
@@ -63,16 +64,26 @@ int	ft_printf(const char *str, ...)
 	{
 		i = (int)(percentage - str); // index of percent start
 		if (i)
-			result = ft_strjoin(result, ft_substr(str, 0, i)); // takes the chars till % and joins that into result
+		{
+			tmp = ft_strjoin(result, ft_substr(str, 0, i)); // takes the chars till % and joins that into result
+			free(result);
+			result = tmp;
+		}
 		if (!result)
 			return (0);
-		result = ft_strjoin(result, ft_check_char(*(percentage + 1), args)); // does conversion and store into result
+		tmp = ft_strjoin(result, ft_check_char(*(percentage + 1), args)); // does conversion and store into result
+		free(result);
+		result = tmp;
 		if (!result)
 			return (0);
 		str = str + (i + 2); // moves str to character after the conversion
 		percentage = ft_strchr(str, '%'); // finds next %
 		if (!percentage)
-			result = ft_strjoin(result, str);
+		{
+			tmp = ft_strjoin(result, str);
+			free(result);
+			result = tmp;
+		}
 	}
 	va_end(args);
 	result_len = ft_strlen(result);
