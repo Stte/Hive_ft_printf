@@ -6,20 +6,20 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:20:01 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/03 17:14:18 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/06 14:40:58 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-static int	ft_hex_char_count(long num)
+static int	ft_hex_char_count(unsigned long n)
 {
 	int		i;
 
 	i = 1;
-	while (num >= 16)
+	while (n >= 16)
 	{
-		num = num / 16;
+		n = n / 16;
 		i++;
 	}
 	return (i);
@@ -44,24 +44,25 @@ static char	ft_decimal16_to_hex(int dec)
 	return (0);
 }
 
-char	*ft_itohex(unsigned int n)
+char	*ft_ulongtohex(unsigned long n)
 {
 	char	*str;
-	long	num;
 	int		len;
 	int		hex;
+	char	*result;
 
-	num = n;
-	len = ft_hex_char_count(num);
+	len = ft_hex_char_count(n);
 	str = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!str)
 		return (NULL);
 	while (len)
 	{
-		hex = ft_decimal16_to_hex(num % 16);
+		hex = ft_decimal16_to_hex(n % 16);
 		str[len - 1] = hex;
-		num = num / 16;
+		n = n / 16;
 		len--;
 	}
-	return (str);
+	result = ft_strjoin("0x", str);
+	free(str);
+	return (result);
 }
