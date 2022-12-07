@@ -15,7 +15,7 @@ build:
 ft_printf:
 	gcc $(FLAGS) $(SANITIZE) $(TEST) $(FT_PRINTF_TEST) ../ft_printf.c ../libft/ft_ulongtohex.c $(CONVS) -L. -lft -o run_ft_printf
 	./run_ft_printf
-	rm ./outputs/test
+	rm ./test_output
 
 clean:
 	rm -f run_libft run_gnl run_ft_printf
