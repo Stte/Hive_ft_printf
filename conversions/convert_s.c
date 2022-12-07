@@ -6,7 +6,7 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 22:30:38 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/02 23:01:53 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/07 14:33:07 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ char	*ft_convert_s(char *str)
 {
 	if (!str || !*str)
 		return (NULL);
-	return (str);
+	return (ft_strjoin("", str));
 }
