@@ -6,7 +6,7 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:31:47 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/06 15:12:23 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/07 15:17:38 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,75 @@ static char	*ft_check_char(char c, va_list args)
 	if (c == 'p')
 		return (ft_convert_p(va_arg(args, void *)));
 	return (NULL);
+}
+
+// Does conversion and adds it to result and returns it.
+static char	*ft_converts_to_result(char *percentage, va_list args, char *result)
+{
+	char	*str;
+	char	*tmp;
+
+	str = ft_check_char(*(percentage + 1), args);
+	if (!str)
+		return (NULL);
+	tmp = ft_strjoin(result, str);
+	if (!tmp)
+		return (NULL);
+	free(result);
+	free(str);
+	return (tmp);
+}
+
+// Takes the string part from the string not including % conversions
+// and adds it to result and returns it.
+static char	*ft_substring_to_result(int i, char *result, const char *str)
+{
+	char	*substr;
+	char	*tmp;
+
+	if (i)
+	{
+		substr = ft_substr(str, 0, i);
+		if (!substr)
+			return (NULL);
+		tmp = ft_strjoin(result, substr);
+		if (!tmp)
+			return (NULL);
+		free(result);
+		free(substr);
+		return (tmp);
+	}
+	return (result);
+}
+
+// Gets the whole string including % conversions.
+static char	*ft_get_string(char *result, const char *str, va_list args)
+{
+	char	*percentage;
+	int		i;
+	char	*tmp;
+
+	percentage = ft_strchr(str, '%');
+	if (!percentage)
+	{
+		free(result);
+		result = (char *)str;
+	}
+	while (percentage)
+	{
+		i = (int)(percentage - str);
+		result = ft_substring_to_result(i, result, str);
+		if (!result)
+			return (NULL);
+		result = ft_converts_to_result(percentage, args, result);
+		if (!result)
+			return (NULL);
+		str = str + (i + 2);
+		percentage = ft_strchr(str, '%');
+	}
+	tmp = ft_strjoin(result, str);
+	free(result);
+	return (tmp);
 }
 
 /**
@@ -47,44 +116,16 @@ static char	*ft_check_char(char c, va_list args)
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
-	char	*percentage;
 	char	*result;
-	int		i;
 	int		result_len;
-	char	*tmp;
 
 	va_start(args, str);
-	percentage = ft_strchr(str, '%');
-	if (!percentage)
-		result = (char *)str;
-	result = ft_calloc(1,1);
+	result = ft_calloc(1, 1);
 	if (!result)
-		return (0);
-	while (percentage)
-	{
-		i = (int)(percentage - str); // index of percent start
-		if (i)
-		{
-			tmp = ft_strjoin(result, ft_substr(str, 0, i)); // takes the chars till % and joins that into result
-			free(result);
-			result = tmp;
-		}
-		if (!result)
-			return (0);
-		tmp = ft_strjoin(result, ft_check_char(*(percentage + 1), args)); // does conversion and store into result
-		free(result);
-		result = tmp;
-		if (!result)
-			return (0);
-		str = str + (i + 2); // moves str to character after the conversion
-		percentage = ft_strchr(str, '%'); // finds next %
-		if (!percentage)
-		{
-			tmp = ft_strjoin(result, str);
-			free(result);
-			result = tmp;
-		}
-	}
+		return (-1);
+	result = ft_get_string(result, str, args);
+	if (!result)
+		return (-1);
 	va_end(args);
 	result_len = ft_strlen(result);
 	write(1, result, result_len);
