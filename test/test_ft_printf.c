@@ -221,6 +221,100 @@ void test_p_3_should_be_equal(void) {
 	TEST_ASSERT_EQUAL_STRING("0x0", actual);
 }
 
+// X
+void test_x_1_should_be_equal(void) {
+	char	expected[101] = {0};
+	int		expected_len;
+	char	actual[101] = {0};
+	int		actual_len;
+	int		fd;
+
+	FILE *fp = freopen("test_output", "w+", stdout);
+
+	expected_len = printf("%x", -1);
+	fclose(fp);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, expected, 100);
+	close(fd);
+
+	FILE *fp2 = freopen("test_output", "w+", stdout);
+
+	actual_len = ft_printf("%x", -1);
+	fclose(fp2);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, actual, 100);
+	close(fd);
+
+	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
+	TEST_ASSERT_EQUAL_STRING(expected, actual);
+}
+
+void test_x_2_should_be_equal(void) {
+	char	expected[101] = {0};
+	int		expected_len;
+	char	actual[101] = {0};
+	int		actual_len;
+	int		fd;
+
+	FILE *fp = freopen("test_output", "w+", stdout);
+
+	expected_len = printf("This is max hex: > %x <", -1);
+	fclose(fp);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, expected, 100);
+	close(fd);
+
+	FILE *fp2 = freopen("test_output", "w+", stdout);
+
+	actual_len = ft_printf("This is max hex: > %x <", -1);
+	fclose(fp2);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, actual, 100);
+	close(fd);
+
+	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
+	TEST_ASSERT_EQUAL_STRING(expected, actual);
+}
+
+void test_x_3_should_be_equal(void) {
+	char	expected[101] = {0};
+	int		expected_len;
+	char	actual[101] = {0};
+	int		actual_len;
+	int		fd;
+
+	FILE *fp = freopen("test_output", "w+", stdout);
+
+	expected_len = printf("%x%x%x", -1, 0, 42);
+	fclose(fp);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, expected, 100);
+	close(fd);
+
+	FILE *fp2 = freopen("test_output", "w+", stdout);
+
+	actual_len = ft_printf("%x%x%x", -1, 0, 42);
+	fclose(fp2);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, actual, 100);
+	close(fd);
+
+	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
+	TEST_ASSERT_EQUAL_STRING(expected, actual);
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
@@ -233,5 +327,8 @@ int main(void)
 	RUN_TEST(test_p_1_should_be_equal);
 	RUN_TEST(test_p_2_should_be_equal);
 	RUN_TEST(test_p_3_should_be_equal);
+	RUN_TEST(test_x_1_should_be_equal);
+	RUN_TEST(test_x_2_should_be_equal);
+	RUN_TEST(test_x_3_should_be_equal);
 	return UNITY_END();
 }

@@ -5,7 +5,8 @@ LIBFT_TEST = ./test_libft.c
 GNL_TEST = ./test_gnl.c
 FT_PRINTF_TEST = ./test_ft_printf.c
 CONVS = \
-../conversions/convert_c.c		../conversions/convert_s.c		../conversions/convert_p.c
+../conversions/convert_c.c		../conversions/convert_s.c		../conversions/convert_p.c		\
+../conversions/convert_x.c
 
 all: ft_printf
 

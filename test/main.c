@@ -32,15 +32,24 @@ int	main(void)
 	// if (hex)
 	// 	hex = NULL;
 
-	char *ptr = "hihii";
-	char *ptr2 = ptr + 1;
+	ft_printf("%x\n", -1);
+	printf(">%x<\n", -1);
+	ft_printf("%x\n", 0);
+	printf(">%x<\n", 0);
+	ft_printf("%x\n", 1000);
+	printf(">%x<\n", 1000);
+	ft_printf("%x\n", 255);
+	printf(">%x<\n", 255);
+
+	// char *ptr = "hihii";
+	// char *ptr2 = ptr + 1;
 	// // printf("\n%d\n", printf("hehe"));
-	ft_printf("%p\n", ptr);
-	printf("%p\n", ptr);
-	ft_printf("%p\n", ptr2);
-	printf("%p\n", ptr2);
-	ft_printf("%p\n", NULL);
-	printf("%p\n", NULL);
+	// ft_printf("%p\n", ptr);
+	// printf("%p\n", ptr);
+	// ft_printf("%p\n", ptr2);
+	// printf("%p\n", ptr2);
+	// ft_printf("%p\n", NULL);
+	// printf("%p\n", NULL);
 	// // printf("this is a strin: %s. Test\n", "hehehe");
 	return (0);
 }
