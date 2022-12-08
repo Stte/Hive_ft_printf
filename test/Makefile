@@ -5,12 +5,13 @@ LIBFT_TEST = ./test_libft.c
 GNL_TEST = ./test_gnl.c
 FT_PRINTF_TEST = ./test_ft_printf.c
 CONVS = \
-../conversions/convert_c.c		../conversions/convert_s.c		../conversions/convert_p.c		\
-../conversions/convert_x.c		../conversions/convert_d.c		../conversions/convert_i.c
+../conversions/convert_c.c			../conversions/convert_s.c		../conversions/convert_p.c		\
+../conversions/convert_x.c			../conversions/convert_d.c		../conversions/convert_i.c		\
+../conversions/convert_upper_x.c
 
 all: ft_printf
 
-build:
+compile:
 	gcc $(FLAGS) main.c ../ft_printf.c $(CONVS) -L. -lft
 
 ft_printf:
