@@ -6,7 +6,7 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 22:30:38 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/06 14:44:17 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/08 16:30:01 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,11 @@
 
 char	*ft_convert_p(void *ptr)
 {
-	return (ft_ulongtohex((unsigned long)ptr));
+	char	*hex;
+	char	*result;
+
+	hex = ft_ulongtohex((unsigned long)ptr);
+	result = ft_strjoin("0x", hex);
+	free(hex);
+	return (result);
 }

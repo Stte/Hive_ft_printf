@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itohex.c                                        :+:      :+:    :+:   */
+/*   ft_ulongtohex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:20:01 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/06 14:40:58 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/08 16:31:07 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ char	*ft_ulongtohex(unsigned long n)
 	char	*str;
 	int		len;
 	int		hex;
-	char	*result;
 
 	len = ft_hex_char_count(n);
 	str = (char *)ft_calloc(len + 1, sizeof(char));
@@ -62,7 +61,5 @@ char	*ft_ulongtohex(unsigned long n)
 		n = n / 16;
 		len--;
 	}
-	result = ft_strjoin("0x", str);
-	free(str);
-	return (result);
+	return (str);
 }
