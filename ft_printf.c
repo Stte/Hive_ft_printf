@@ -6,7 +6,7 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:31:47 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/07 15:17:38 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/08 16:13:47 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static char	*ft_check_char(char c, va_list args)
 		return (ft_convert_s(va_arg(args, char *)));
 	if (c == 'p')
 		return (ft_convert_p(va_arg(args, void *)));
+	if (c == 'x')
+		return (ft_convert_x(va_arg(args, int)));
 	return (NULL);
 }
 
@@ -37,8 +39,8 @@ static char	*ft_converts_to_result(char *percentage, va_list args, char *result)
 	tmp = ft_strjoin(result, str);
 	if (!tmp)
 		return (NULL);
-	free(result);
 	free(str);
+	free(result);
 	return (tmp);
 }
 

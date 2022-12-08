@@ -6,7 +6,7 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:24:54 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/06 14:50:59 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/08 16:17:35 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 char	*ft_convert_c(int c);
 char	*ft_convert_p(void *ptr);
 char	*ft_convert_s(char *str);
+char	*ft_convert_x(int i);
 /**
  * @brief Print.
  *
@@ -53,5 +54,6 @@ int		ft_printf(const char *str, ...);
  * @attention Allocates memory
  */
 char	*ft_ulongtohex(unsigned long n);
+
 
 #endif
