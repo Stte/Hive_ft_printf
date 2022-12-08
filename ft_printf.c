@@ -6,7 +6,7 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:31:47 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/08 16:13:47 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/08 18:53:02 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ static char	*ft_check_char(char c, va_list args)
 		return (ft_convert_s(va_arg(args, char *)));
 	if (c == 'p')
 		return (ft_convert_p(va_arg(args, void *)));
+	if (c == 'd')
+		return (ft_convert_d(va_arg(args, int)));
+	if (c == 'i')
+		return (ft_convert_i(va_arg(args, int)));
 	if (c == 'x')
 		return (ft_convert_x(va_arg(args, int)));
 	return (NULL);
