@@ -32,14 +32,19 @@ int	main(void)
 	// if (hex)
 	// 	hex = NULL;
 
-	ft_printf("%x\n", -1);
-	printf(">%x<\n", -1);
-	ft_printf("%x\n", 0);
-	printf(">%x<\n", 0);
-	ft_printf("%x\n", 1000);
-	printf(">%x<\n", 1000);
-	ft_printf("%x\n", 255);
-	printf(">%x<\n", 255);
+	ft_printf("%d\n", -1);
+	printf(">%d<\n", -1);
+	ft_printf("%d\n", 0);
+	printf(">%d<\n", 0);
+	ft_printf("%d\n", 1000);
+	printf(">%d<\n", 1000);
+
+	ft_printf("%i\n", -1);
+	printf(">%i<\n", -1);
+	ft_printf("%i\n", 0);
+	printf(">%i<\n", 0);
+	ft_printf("%i\n", 1000);
+	printf(">%i<\n", 1000);
 
 	// char *ptr = "hihii";
 	// char *ptr2 = ptr + 1;
