@@ -7,7 +7,7 @@ FT_PRINTF_TEST = ./test_ft_printf.c
 CONVS = \
 ../conversions/convert_c.c			../conversions/convert_s.c		../conversions/convert_p.c		\
 ../conversions/convert_x.c			../conversions/convert_d.c		../conversions/convert_i.c		\
-../conversions/convert_upper_x.c
+../conversions/convert_upper_x.c	../conversions/percent.c
 
 all: ft_printf
 

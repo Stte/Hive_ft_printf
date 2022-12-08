@@ -32,12 +32,12 @@ int	main(void)
 	// if (hex)
 	// 	hex = NULL;
 
-	ft_printf(">%X<\n", -1);
-	printf(">%X<\n", -1);
-	ft_printf(">%X<\n", 0);
-	printf(">%X<\n", 0);
-	ft_printf(">%X<\n", 1000);
-	printf(">%X<\n", 1000);
+	ft_printf(">%%<\n");
+	printf(">%%<\n");
+	ft_printf(">%%%%<\n");
+	printf(">%%%%<\n");
+	ft_printf(">%%%%%%%c<\n", 'c');
+	printf(">%%%%%%%c<\n", 'c');
 
 	// char *ptr = "hihii";
 	// char *ptr2 = ptr + 1;
