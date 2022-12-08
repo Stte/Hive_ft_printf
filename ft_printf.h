@@ -6,7 +6,7 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:24:54 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/08 16:17:35 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/08 18:07:15 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,5 @@ char	*ft_convert_x(int i);
  * @return int Length of the returned string
  */
 int		ft_printf(const char *str, ...);
-
-
-// add to libft
-
-/**
- * @brief Unsigned long to hexadecimal.
- *
- * Returns given unsigned long (e.g. casted pointer) to hexadecimal string.
- *
- * @param n Unsigned long
- * @return char Hexadecimal
- * @attention Allocates memory
- */
-char	*ft_ulongtohex(unsigned long n);
-
 
 #endif

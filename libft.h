@@ -6,7 +6,7 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 14:09:24 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/03 00:27:48 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/08 17:57:57 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,71 @@ int		ft_isprint(int c);
  * @attention Allocates memory
  */
 char	*ft_itoa(int n);
+/**
+ * @brief List add back.
+ *
+ * @param lst
+ * @param new
+ */
+void	ft_lstadd_back(t_list **lst, t_list *new);
+/**
+ * @brief List add front.
+ *
+ * @param lst
+ * @param new
+ */
+void	ft_lstadd_front(t_list **lst, t_list *new);
+/**
+ * @brief Clear list.
+ *
+ * @param lst
+ * @param del
+ */
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+/**
+ * @brief Delete node.
+ *
+ * @param lst
+ * @param del
+ */
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+/**
+ * @brief Iterate list.
+ *
+ * @param lst
+ * @param f
+ */
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+/**
+ * @brief Last node in a list.
+ *
+ * @param lst
+ * @return t_list*
+ */
+t_list	*ft_lstlast(t_list *lst);
+/**
+ * @brief List map.
+ *
+ * @param lst
+ * @param f
+ * @param del
+ * @return t_list*
+ */
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+/**
+ * @brief Create a new node.
+ *
+ * @param content
+ * @return t_list*
+ */
+t_list	*ft_lstnew(void *content);
+/**
+ * @brief Size of a list.
+ *
+ * @param lst
+ * @return int
+ */
+int		ft_lstsize(t_list *lst);
 /**
  * @brief Scan memory for a character.
  *
@@ -252,7 +317,9 @@ size_t	ft_strlen(const char *s);
 /**
  * @brief Create a copy of a string passing each char through a function.
  *
- * Creates a new string and assigns the values to that string by taking a character from the string \b s and passing it trough the function \b f.
+ * Creates a new string and assigns the values to that string by
+ * taking a character from the string \b s
+ * and passing it trough the function \b f.
  * Function \b f takes a character and index of that character as parameters.
  *
  * @param s String
@@ -264,7 +331,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 /**
  * @brief String compare.
  *
- * Compares two strings and returns the difference of the first missmatch character or 0 if strings are equal.
+ * Compares two strings and returns the difference of the first missmatch
+ * character or 0 if strings are equal.
  *
  * @param s1 String
  * @param s2 String
@@ -275,7 +343,8 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 /**
  * @brief Search string from string.
  *
- * Searches string from a string and returns the address of the start of the found string.
+ * Searches string from a string and returns
+ * the address of the start of the found string.
  *
  * @param haystack String
  * @param needle String
@@ -330,69 +399,12 @@ int		ft_tolower(int c);
  */
 int		ft_toupper(int c);
 /**
- * @brief List add back.
+ * @brief Unsigned long to lowercase hexadesimal string.
  *
- * @param lst
- * @param new
+ * @param n unsigned long
+ * @return char* hexadesimal string in lowercase
+ * @attention Allocates memory
  */
-void	ft_lstadd_back(t_list **lst, t_list *new);
-/**
- * @brief List add front.
- *
- * @param lst
- * @param new
- */
-void	ft_lstadd_front(t_list **lst, t_list *new);
-/**
- * @brief Clear list.
- *
- * @param lst
- * @param del
- */
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-/**
- * @brief Delete node.
- *
- * @param lst
- * @param del
- */
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-/**
- * @brief Iterate list.
- *
- * @param lst
- * @param f
- */
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-/**
- * @brief Last node in a list.
- *
- * @param lst
- * @return t_list*
- */
-t_list	*ft_lstlast(t_list *lst);
-/**
- * @brief List map.
- *
- * @param lst
- * @param f
- * @param del
- * @return t_list*
- */
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-/**
- * @brief Create a new node.
- *
- * @param content
- * @return t_list*
- */
-t_list	*ft_lstnew(void *content);
-/**
- * @brief Size of a list.
- *
- * @param lst
- * @return int
- */
-int		ft_lstsize(t_list *lst);
+char	*ft_ulongtohex(unsigned long n);
 
 #endif
