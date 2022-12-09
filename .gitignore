@@ -3,3 +3,5 @@
 run_*
 a.out
 test_*
+*.o
+*.a
