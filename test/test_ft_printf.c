@@ -130,6 +130,36 @@ void test_s_3_should_be_equal(void) {
 	TEST_ASSERT_EQUAL_INT(12, actual_len);
 	TEST_ASSERT_EQUAL_STRING(expected, actual);
 }
+void test_s_4_should_be_equal(void) {
+	char	expected[101] = {0};
+	int		expected_len;
+	char	actual[101] = {0};
+	int		actual_len;
+	int		fd;
+
+	FILE *fp = freopen("test_output", "w+", stdout);
+
+	expected_len = printf("Hello %s World\n", "He%%o");
+	fclose(fp);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, expected, 100);
+	close(fd);
+
+	FILE *fp2 = freopen("test_output", "w+", stdout);
+
+	actual_len = ft_printf("Hello %s World\n", "He%%o");
+	fclose(fp2);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, actual, 100);
+	close(fd);
+
+	TEST_ASSERT_EQUAL_STRING(expected, actual);
+	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
+}
 
 // p
 void test_p_1_should_be_equal(void) {
@@ -864,6 +894,40 @@ void test_empty_should_be_equal(void) {
 	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
 }
 
+// Nulls
+void test_nulls_should_be_equal(void) {
+	char	expected[101] = {0};
+	int		expected_len;
+	char	actual[101] = {0};
+	int		actual_len;
+	int		fd;
+
+	FILE *fp = freopen("test_output", "w+", stdout);
+
+	expected_len = printf("real: %s%p\n", NULL, NULL);
+	fclose(fp);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, expected, 100);
+	close(fd);
+
+	FILE *fp2 = freopen("test_output", "w+", stdout);
+
+	actual_len = ft_printf("real: %s%p\n", NULL, NULL);
+	fclose(fp2);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, actual, 100);
+	close(fd);
+
+	TEST_ASSERT_EQUAL_STRING(expected, actual);
+	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
+}
+
+
+
 int main(void)
 {
 	UNITY_BEGIN();
@@ -873,6 +937,7 @@ int main(void)
 	RUN_TEST(test_s_1_should_be_equal);
 	RUN_TEST(test_s_2_should_be_equal);
 	RUN_TEST(test_s_3_should_be_equal);
+	RUN_TEST(test_s_4_should_be_equal);
 	RUN_TEST(test_p_1_should_be_equal);
 	RUN_TEST(test_p_2_should_be_equal);
 	RUN_TEST(test_p_3_should_be_equal);
@@ -897,5 +962,6 @@ int main(void)
 	RUN_TEST(test_all_should_be_equal);
 	RUN_TEST(test_none_should_be_equal);
 	RUN_TEST(test_empty_should_be_equal);
+	RUN_TEST(test_nulls_should_be_equal);
 	return UNITY_END();
 }
