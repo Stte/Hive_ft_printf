@@ -14,6 +14,7 @@ build:
 ft_printf:
 	gcc $(FLAGS) $(SANITIZE) $(TEST) $(FT_PRINTF_TEST) -L.. -lftprintf -o run_ft_printf
 	./run_ft_printf
+	rm -f test_output
 
 setup_failer:
 	sh malloc_failer_setup.sh
