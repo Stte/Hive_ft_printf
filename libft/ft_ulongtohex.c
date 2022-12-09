@@ -6,11 +6,11 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:20:01 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 22:36:15 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/09 23:51:08 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/libft.h"
+#include "../headers/ft_printf.h"
 
 static int	ft_hex_char_count(unsigned long n)
 {

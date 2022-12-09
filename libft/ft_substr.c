@@ -6,11 +6,11 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 16:53:11 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 22:36:11 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/09 23:51:05 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/libft.h"
+#include "../headers/ft_printf.h"
 
 static size_t	ft_min(size_t a, size_t b)
 {

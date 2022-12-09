@@ -6,11 +6,11 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 11:07:09 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 22:35:58 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/09 23:50:50 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/libft.h"
+#include "../headers/ft_printf.h"
 
 char	*ft_strchr(const char *s, int c)
 {

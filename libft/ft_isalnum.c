@@ -6,11 +6,11 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 15:24:25 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 22:35:50 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/09 23:50:32 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/libft.h"
+#include "../headers/ft_printf.h"
 
 int	ft_isalnum(int c)
 {

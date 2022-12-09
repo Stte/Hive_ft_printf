@@ -6,11 +6,11 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 14:50:57 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 22:36:01 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/09 23:50:52 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/libft.h"
+#include "../headers/ft_printf.h"
 
 char	*ft_strdup(const char *s1)
 {

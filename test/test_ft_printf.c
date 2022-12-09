@@ -1,5 +1,4 @@
 #include "unity/unity.h"
-#include "../headers/libft.h"
 #include <fcntl.h>
 #include <unistd.h>
 #include "../headers/ft_printf.h"

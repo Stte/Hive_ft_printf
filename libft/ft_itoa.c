@@ -6,11 +6,11 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 18:54:42 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 22:35:52 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/09 23:50:41 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/libft.h"
+#include "../headers/ft_printf.h"
 
 static int	ft_itoa_size(long num)
 {

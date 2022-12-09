@@ -6,11 +6,11 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 23:18:45 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 22:36:09 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/09 23:51:03 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/libft.h"
+#include "../headers/ft_printf.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {

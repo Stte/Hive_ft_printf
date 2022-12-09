@@ -6,11 +6,11 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:17:37 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 22:49:37 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/09 23:49:20 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/libft.h"
+#include "../headers/ft_printf.h"
 
 void	ft_bzero(void *s, size_t n)
 {
