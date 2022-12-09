@@ -6,7 +6,7 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:24:54 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 23:52:54 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/09 23:57:14 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_convert_d(int c);
 char	*ft_convert_i(int c);
 char	*ft_convert_p(void *ptr);
 char	*ft_convert_s(char *str);
-char	*ft_convert_u(int c);
+char	*ft_convert_u(unsigned int c);
 char	*ft_convert_upper_x(int i);
 char	*ft_convert_x(int i);
 char	*ft_percent(void);

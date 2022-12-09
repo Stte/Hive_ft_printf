@@ -6,11 +6,11 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:09:22 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 22:43:36 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/09 23:56:12 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/libft.h"
+#include "../headers/ft_printf.h"
 
 static char	ft_item_to_upper(unsigned int i, char c)
 {

@@ -6,11 +6,11 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:13:30 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 22:43:25 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/09 23:56:01 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/libft.h"
+#include "../headers/ft_printf.h"
 
 char	*ft_convert_d(int c)
 {
