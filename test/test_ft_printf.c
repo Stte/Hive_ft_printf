@@ -767,8 +767,8 @@ void test_u_3_should_be_equal(void) {
 	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
 }
 
-// ALL
-void test_all_1_should_be_equal(void) {
+// All
+void test_all_should_be_equal(void) {
 	char	expected[101] = {0};
 	int		expected_len;
 	char	actual[101] = {0};
@@ -789,6 +789,70 @@ void test_all_1_should_be_equal(void) {
 	FILE *fp2 = freopen("test_output", "w+", stdout);
 
 	actual_len = ft_printf(">%c%s%p%d%i%u%x%X%%<\n", 'a', "ajsdf", p, 1, 2, 3, 255, 255);
+	fclose(fp2);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, actual, 100);
+	close(fd);
+
+	TEST_ASSERT_EQUAL_STRING(expected, actual);
+	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
+}
+
+// No converts
+void test_none_should_be_equal(void) {
+	char	expected[101] = {0};
+	int		expected_len;
+	char	actual[101] = {0};
+	int		actual_len;
+	int		fd;
+
+	FILE *fp = freopen("test_output", "w+", stdout);
+
+	expected_len = printf(">Hello World<\n");
+	fclose(fp);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, expected, 100);
+	close(fd);
+
+	FILE *fp2 = freopen("test_output", "w+", stdout);
+
+	actual_len = ft_printf(">Hello World<\n");
+	fclose(fp2);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, actual, 100);
+	close(fd);
+
+	TEST_ASSERT_EQUAL_STRING(expected, actual);
+	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
+}
+
+// Empty
+void test_empty_should_be_equal(void) {
+	char	expected[101] = {0};
+	int		expected_len;
+	char	actual[101] = {0};
+	int		actual_len;
+	int		fd;
+
+	FILE *fp = freopen("test_output", "w+", stdout);
+
+	expected_len = printf("");
+	fclose(fp);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, expected, 100);
+	close(fd);
+
+	FILE *fp2 = freopen("test_output", "w+", stdout);
+
+	actual_len = ft_printf("");
 	fclose(fp2);
 	freopen("/dev/tty", "w", stdout);
 
@@ -830,6 +894,8 @@ int main(void)
 	RUN_TEST(test_u_1_should_be_equal);
 	RUN_TEST(test_u_2_should_be_equal);
 	RUN_TEST(test_u_3_should_be_equal);
-	RUN_TEST(test_all_1_should_be_equal);
+	RUN_TEST(test_all_should_be_equal);
+	RUN_TEST(test_none_should_be_equal);
+	RUN_TEST(test_empty_should_be_equal);
 	return UNITY_END();
 }

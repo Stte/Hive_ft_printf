@@ -23,6 +23,7 @@ ft_printf:
 malloc_failer:
 	gcc $(FLAGS) $(WRAP) ./main.c ./malloc_failer.c ../ft_printf.c $(CONVS) -L. -lft_linux -o run_test
 	valgrind --leak-check=full --show-leak-kinds=all ./run_test
+	# ./run_test
 
 clean:
 	rm -fr run_ft_printf* run_test* a.out*
