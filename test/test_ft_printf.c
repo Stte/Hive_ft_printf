@@ -675,6 +675,131 @@ void test_percent_3_should_be_equal(void) {
 	TEST_ASSERT_EQUAL_STRING(expected, actual);
 }
 
+// u
+void test_u_1_should_be_equal(void) {
+	char	expected[101] = {0};
+	int		expected_len;
+	char	actual[101] = {0};
+	int		actual_len;
+	int		fd;
+
+	FILE *fp = freopen("test_output", "w+", stdout);
+
+	expected_len = printf("%u", 0);
+	fclose(fp);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, expected, 100);
+	close(fd);
+
+	FILE *fp2 = freopen("test_output", "w+", stdout);
+
+	actual_len = ft_printf("%u", 0);
+	fclose(fp2);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, actual, 100);
+	close(fd);
+
+	TEST_ASSERT_EQUAL_STRING(expected, actual);
+	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
+}
+void test_u_2_should_be_equal(void) {
+	char	expected[101] = {0};
+	int		expected_len;
+	char	actual[101] = {0};
+	int		actual_len;
+	int		fd;
+
+	FILE *fp = freopen("test_output", "w+", stdout);
+
+	expected_len = printf("This is max unsigned integer: > %u <", -1);
+	fclose(fp);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, expected, 100);
+	close(fd);
+
+	FILE *fp2 = freopen("test_output", "w+", stdout);
+
+	actual_len = ft_printf("This is max unsigned integer: > %u <", -1);
+	fclose(fp2);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, actual, 100);
+	close(fd);
+
+	TEST_ASSERT_EQUAL_STRING(expected, actual);
+	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
+}
+void test_u_3_should_be_equal(void) {
+	char	expected[101] = {0};
+	int		expected_len;
+	char	actual[101] = {0};
+	int		actual_len;
+	int		fd;
+
+	FILE *fp = freopen("test_output", "w+", stdout);
+
+	expected_len = printf("%u%u%u", -1, 0 , 42);
+	fclose(fp);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, expected, 100);
+	close(fd);
+
+	FILE *fp2 = freopen("test_output", "w+", stdout);
+
+	actual_len = ft_printf("%u%u%u", -1, 0 , 42);
+	fclose(fp2);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, actual, 100);
+	close(fd);
+
+	TEST_ASSERT_EQUAL_STRING(expected, actual);
+	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
+}
+
+// ALL
+void test_all_1_should_be_equal(void) {
+	char	expected[101] = {0};
+	int		expected_len;
+	char	actual[101] = {0};
+	int		actual_len;
+	int		fd;
+	char	*p = "";
+
+	FILE *fp = freopen("test_output", "w+", stdout);
+
+	expected_len = printf(">%c%s%p%d%i%u%x%X%%<\n", 'a', "ajsdf", p, 1, 2, 3, 255, 255);
+	fclose(fp);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, expected, 100);
+	close(fd);
+
+	FILE *fp2 = freopen("test_output", "w+", stdout);
+
+	actual_len = ft_printf(">%c%s%p%d%i%u%x%X%%<\n", 'a', "ajsdf", p, 1, 2, 3, 255, 255);
+	fclose(fp2);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, actual, 100);
+	close(fd);
+
+	TEST_ASSERT_EQUAL_STRING(expected, actual);
+	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
@@ -702,5 +827,9 @@ int main(void)
 	RUN_TEST(test_percent_1_should_be_equal);
 	RUN_TEST(test_percent_2_should_be_equal);
 	RUN_TEST(test_percent_3_should_be_equal);
+	RUN_TEST(test_u_1_should_be_equal);
+	RUN_TEST(test_u_2_should_be_equal);
+	RUN_TEST(test_u_3_should_be_equal);
+	RUN_TEST(test_all_1_should_be_equal);
 	return UNITY_END();
 }

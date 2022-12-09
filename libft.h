@@ -6,7 +6,7 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 14:09:24 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/08 17:57:57 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/09 14:11:50 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,15 @@ t_list	*ft_lstnew(void *content);
  * @return int
  */
 int		ft_lstsize(t_list *lst);
+/**
+ * @brief Long to ASCII.
+ *
+ * Returns a number as a string.
+ * @param n long Number
+ * @return char* Number \b n as a string
+ * @attention Allocates memory
+ */
+char	*ft_ltoa(long n);
 /**
  * @brief Scan memory for a character.
  *
