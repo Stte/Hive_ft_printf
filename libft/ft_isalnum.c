@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent.c                                          :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 22:09:38 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 23:05:15 by tspoof           ###   ########.fr       */
+/*   Created: 2022/10/25 15:24:25 by tspoof            #+#    #+#             */
+/*   Updated: 2022/12/09 22:35:50 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/libft.h"
 
-char	*ft_percent(void)
+int	ft_isalnum(int c)
 {
-	return (ft_strdup("%"));
+	if (ft_isalpha(c) || ft_isdigit(c))
+	{
+		return (1);
+	}
+	return (0);
 }

@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent.c                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 22:09:38 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 23:05:15 by tspoof           ###   ########.fr       */
+/*   Created: 2022/10/27 10:36:33 by tspoof            #+#    #+#             */
+/*   Updated: 2022/12/09 22:49:48 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/libft.h"
 
-char	*ft_percent(void)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	return (ft_strdup("%"));
+	size_t	n;
+
+	n = ft_strlen(src);
+	if (dstsize > 0)
+	{
+		if (n < dstsize)
+			ft_memcpy(dst, src, n + 1);
+		else
+		{
+			ft_memcpy(dst, src, dstsize - 1);
+			dst[dstsize - 1] = '\0';
+		}
+	}
+	return (n);
 }

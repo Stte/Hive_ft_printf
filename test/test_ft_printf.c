@@ -1,8 +1,8 @@
 #include "unity/unity.h"
-#include "../libft.h"
+#include "../headers/libft.h"
 #include <fcntl.h>
 #include <unistd.h>
-#include "../ft_printf.h"
+#include "../headers/ft_printf.h"
 
 void setUp(void) {
 }

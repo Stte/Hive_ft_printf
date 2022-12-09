@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 22:09:38 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 23:05:15 by tspoof           ###   ########.fr       */
+/*   Created: 2022/11/03 13:10:14 by tspoof            #+#    #+#             */
+/*   Updated: 2022/12/09 22:35:45 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/libft.h"
 
-char	*ft_percent(void)
+void	*ft_calloc(size_t count, size_t size)
 {
-	return (ft_strdup("%"));
+	void	*ptr;
+
+	if (!count || !size)
+		return (ft_calloc(1, 1));
+	if ((count * size) / count != size)
+		return (NULL);
+	ptr = malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }

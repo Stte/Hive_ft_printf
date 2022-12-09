@@ -6,11 +6,11 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:09:22 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/08 18:07:28 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/09 23:04:50 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../headers/libft.h"
 
 char	*ft_convert_x(int i)
 {
@@ -19,6 +19,3 @@ char	*ft_convert_x(int i)
 	hex = ft_ulongtohex((unsigned int)i);
 	return (hex);
 }
-
-
-

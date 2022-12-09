@@ -5,26 +5,21 @@ TEST = ./unity/unity.c
 LIBFT_TEST = ./test_libft.c
 GNL_TEST = ./test_gnl.c
 FT_PRINTF_TEST = ./test_ft_printf.c
-CONVS = \
-../conversions/convert_c.c			../conversions/convert_s.c		../conversions/convert_p.c		\
-../conversions/convert_x.c			../conversions/convert_d.c		../conversions/convert_i.c		\
-../conversions/convert_upper_x.c	../conversions/percent.c		../conversions/convert_u.c
 
-all: ft_printf setup_failer clean
+all: build ft_printf setup_failer clean
 
-compile:
-	gcc $(FLAGS) main.c ../ft_printf.c $(CONVS) -L. -lft
+build:
+	make -C ../
 
 ft_printf:
-	gcc $(FLAGS) $(SANITIZE) $(TEST) $(FT_PRINTF_TEST) ../ft_printf.c $(CONVS) -L. -lft -o run_ft_printf
+	gcc $(FLAGS) $(SANITIZE) $(TEST) $(FT_PRINTF_TEST) -L.. -lftprintf -o run_ft_printf
 	./run_ft_printf
-	rm ./test_output
 
 setup_failer:
 	sh malloc_failer_setup.sh
 
 malloc_failer:
-	gcc $(FLAGS) $(WRAP) ./main.c ./malloc_failer.c ../ft_printf.c $(CONVS) -L. -lft_linux -o run_test
+	gcc $(FLAGS) $(WRAP) ./main.c ./malloc_failer.c -L.. -lftprintf_linux -o run_ft_printf -o run_test
 	valgrind --leak-check=full --show-leak-kinds=all ./run_test
 
 run_failer:

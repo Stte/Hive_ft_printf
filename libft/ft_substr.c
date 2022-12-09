@@ -1,23 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_c.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 17:42:33 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 22:43:22 by tspoof           ###   ########.fr       */
+/*   Created: 2022/11/03 16:53:11 by tspoof            #+#    #+#             */
+/*   Updated: 2022/12/09 22:36:11 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/libft.h"
 
-char	*ft_convert_c(int c)
+static size_t	ft_min(size_t a, size_t b)
 {
-	char	*str;
+	if (a < b)
+		return (a);
+	return (b);
+}
 
-	str = ft_calloc(2, 1);
-	if (!str || !ft_isalnum(c))
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t	s_len;
+	size_t	sub_len;
+	char	*ptr;
+
+	if (!s)
 		return (NULL);
-	return (ft_memset(str, c, 1));
+	s_len = ft_strlen(s);
+	if (start < s_len)
+		sub_len = ft_min(s_len, len);
+	else
+		sub_len = 0;
+	ptr = (char *)ft_calloc(sub_len + 1, sizeof(char));
+	if (!ptr)
+		return (NULL);
+	ft_strlcpy(ptr, s + start, sub_len + 1);
+	return (ptr);
 }

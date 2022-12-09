@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent.c                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 22:09:38 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 23:05:15 by tspoof           ###   ########.fr       */
+/*   Created: 2022/10/25 18:09:01 by tspoof            #+#    #+#             */
+/*   Updated: 2022/11/30 17:07:09 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/libft.h"
-
-char	*ft_percent(void)
+void	*ft_memset(void *b, int c, int len)
 {
-	return (ft_strdup("%"));
+	int	i;
+
+	i = 0;
+	while (i < len)
+	{
+		((char *)b)[i] = (unsigned char) c;
+		i++;
+	}
+	return (b);
 }
