@@ -10,7 +10,7 @@ CONVS = \
 ../conversions/convert_x.c			../conversions/convert_d.c		../conversions/convert_i.c		\
 ../conversions/convert_upper_x.c	../conversions/percent.c		../conversions/convert_u.c
 
-all: ft_printf
+all: ft_printf setup_failer clean
 
 compile:
 	gcc $(FLAGS) main.c ../ft_printf.c $(CONVS) -L. -lft
@@ -20,10 +20,15 @@ ft_printf:
 	./run_ft_printf
 	rm ./test_output
 
+setup_failer:
+	sh malloc_failer_setup.sh
+
 malloc_failer:
 	gcc $(FLAGS) $(WRAP) ./main.c ./malloc_failer.c ../ft_printf.c $(CONVS) -L. -lft_linux -o run_test
 	valgrind --leak-check=full --show-leak-kinds=all ./run_test
-	# ./run_test
+
+run_failer:
+	docker exec -ti printf_malloc_failer make malloc_failer -C ./test
 
 clean:
 	rm -fr run_ft_printf* run_test* a.out*
