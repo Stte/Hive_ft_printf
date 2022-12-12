@@ -17,7 +17,7 @@ all: $(NAME)
 
 $(NAME): $(SRCS_OBJ) $(LIBFT)
 	$(CC) $(FLAGS) $(SRCS) $(CONVS)
-	ar rcs $(NAME) $(SRCS_OBJ) $(CONVS_OBJ) $(LIBFT)
+	ar rcs $(NAME) $(SRCS_OBJ) $(CONVS_OBJ)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
@@ -38,3 +38,9 @@ linux:
 	cp $(LIBFT:%.a=%_linux.a) $(NAME:%.a=%_linux.a)
 	$(CC) $(FLAGS) $(SRCS) $(CONVS)
 	ar rcs $(NAME:%.a=%_linux.a) $(SRCS_OBJ) $(CONVS_OBJ) $(LIBFT_OBJ)
+
+debug:
+	make debug -C $(LIBFT_DIR)
+	cp $(LIBFT) $(NAME)
+	$(CC) $(FLAGS) -g $(SRCS) $(CONVS)
+	ar rcs $(NAME) $(SRCS_OBJ) $(CONVS_OBJ)

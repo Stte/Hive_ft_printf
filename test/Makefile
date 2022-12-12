@@ -27,4 +27,12 @@ run_failer:
 	docker exec -ti printf_malloc_failer make malloc_failer -C ./test
 
 clean:
-	rm -fr run_ft_printf* run_test* a.out*
+	rm -fr run_ft_printf* run_test* a.out* run_playground*
+
+fclean:
+	make fclean -C ..
+
+playground:
+	make debug -C ..
+	gcc $(FLAGS) $(SANITIZE) playground.c -L.. -lftprintf -o run_playground
+	./run_playground
