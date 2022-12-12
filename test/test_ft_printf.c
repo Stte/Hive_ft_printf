@@ -70,6 +70,126 @@ void test_c_3_should_be_equal(void) {
 	TEST_ASSERT_EQUAL_INT(4, actual_len);
 	TEST_ASSERT_EQUAL_STRING(expected, actual);
 }
+void test_c_4_should_be_equal(void) {
+	char	expected[101] = {0};
+	int		expected_len;
+	char	actual[101] = {0};
+	int		actual_len;
+	int		fd;
+
+	FILE *fp = freopen("test_output", "w+", stdout);
+
+	expected_len = printf(" %c", '0' - 256);
+	fclose(fp);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, expected, 100);
+	close(fd);
+
+	FILE *fp2 = freopen("test_output", "w+", stdout);
+
+	actual_len = ft_printf(" %c", '0' - 256);
+	fclose(fp2);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, actual, 100);
+	close(fd);
+
+	TEST_ASSERT_EQUAL_STRING(expected, actual);
+	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
+}
+void test_c_5_should_be_equal(void) {
+	char	expected[101] = {0};
+	int		expected_len;
+	char	actual[101] = {0};
+	int		actual_len;
+	int		fd;
+
+	FILE *fp = freopen("test_output", "w+", stdout);
+
+	expected_len = printf("%c", 0);
+	fclose(fp);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, expected, 100);
+	close(fd);
+
+	FILE *fp2 = freopen("test_output", "w+", stdout);
+
+	actual_len = ft_printf("%c", 0);
+	fclose(fp2);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, actual, 100);
+	close(fd);
+
+	TEST_ASSERT_EQUAL_STRING(expected, actual);
+	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
+}
+void test_c_6_should_be_equal(void) {
+	char	expected[101] = {0};
+	int		expected_len;
+	char	actual[101] = {0};
+	int		actual_len;
+	int		fd;
+
+	FILE *fp = freopen("test_output", "w+", stdout);
+
+	expected_len = printf(" %c %c %c ", '0', 0, '1');
+	fclose(fp);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, expected, 100);
+	close(fd);
+
+	FILE *fp2 = freopen("test_output", "w+", stdout);
+
+	actual_len = ft_printf(" %c %c %c ", '0', 0, '1');
+	fclose(fp2);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, actual, 100);
+	close(fd);
+
+	TEST_ASSERT_EQUAL_STRING(expected, actual);
+	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
+}
+void test_c_7_should_be_equal(void) {
+	char	expected[101] = {0};
+	int		expected_len;
+	char	actual[101] = {0};
+	int		actual_len;
+	int		fd;
+
+	FILE *fp = freopen("test_output", "w+", stdout);
+
+	expected_len = printf(" %c %c %c ", '2', '1', 0);
+	fclose(fp);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, expected, 100);
+	close(fd);
+
+	FILE *fp2 = freopen("test_output", "w+", stdout);
+
+	actual_len = ft_printf(" %c %c %c ", '2', '1', 0);
+	fclose(fp2);
+	freopen("/dev/tty", "w", stdout);
+
+	fd = open("test_output", O_RDWR);
+	read(fd, actual, 100);
+	close(fd);
+
+	TEST_ASSERT_EQUAL_STRING(expected, actual);
+	TEST_ASSERT_EQUAL_INT(expected_len, actual_len);
+}
 
 // s
 void test_s_1_should_be_equal(void) {
@@ -926,13 +1046,16 @@ void test_nulls_should_be_equal(void) {
 }
 
 
-
 int main(void)
 {
 	UNITY_BEGIN();
 	RUN_TEST(test_c_1_should_be_equal);
 	RUN_TEST(test_c_2_should_be_equal);
 	RUN_TEST(test_c_3_should_be_equal);
+	RUN_TEST(test_c_4_should_be_equal);
+	RUN_TEST(test_c_5_should_be_equal);
+	RUN_TEST(test_c_6_should_be_equal);
+	RUN_TEST(test_c_7_should_be_equal);
 	RUN_TEST(test_s_1_should_be_equal);
 	RUN_TEST(test_s_2_should_be_equal);
 	RUN_TEST(test_s_3_should_be_equal);
