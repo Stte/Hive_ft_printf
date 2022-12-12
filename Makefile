@@ -38,5 +38,3 @@ linux:
 	cp $(LIBFT:%.a=%_linux.a) $(NAME:%.a=%_linux.a)
 	$(CC) $(FLAGS) $(SRCS) $(CONVS)
 	ar rcs $(NAME:%.a=%_linux.a) $(SRCS_OBJ) $(CONVS_OBJ) $(LIBFT_OBJ)
-
-
