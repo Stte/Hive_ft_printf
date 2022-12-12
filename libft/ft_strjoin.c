@@ -6,11 +6,11 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 17:39:07 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 23:50:55 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/11/21 16:56:06 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/ft_printf.h"
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

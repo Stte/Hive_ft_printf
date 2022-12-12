@@ -6,32 +6,37 @@ CONVS = \
 ./conversions/convert_x.c			./conversions/convert_d.c		./conversions/convert_i.c		\
 ./conversions/convert_upper_x.c		./conversions/percent.c			./conversions/convert_u.c
 CONVS_OBJ = $(CONVS:./conversions/%.c=%.o)
-LIBFT = \
-./libft/ft_bzero.c		./libft/ft_calloc.c		./libft/ft_isalnum.c	./libft/ft_isalpha.c		\
-./libft/ft_isdigit.c	./libft/ft_itoa.c		./libft/ft_ltoa.c		./libft/ft_memcpy.c			\
-./libft/ft_memset.c		./libft/ft_strchr.c		./libft/ft_strdup.c		./libft/ft_strjoin.c		\
-./libft/ft_strlcpy.c	./libft/ft_strlen.c		./libft/ft_strmapi.c	./libft/ft_substr.c			\
-./libft/ft_toupper.c	./libft/ft_ulongtohex.c
-LIBFT_OBJ = $(LIBFT:./libft/%.c=%.o)
 SRCS = \
 ft_printf.c
 SRCS_OBJ = $(SRCS:.c=.o)
+LIBFT_DIR	= ./libft
+LIBFT		= $(LIBFT_DIR)/libft.a
 
 
 all: $(NAME)
 
-$(NAME): $(SRCS)
-	$(CC) $(FLAGS) $(SRCS) $(CONVS)	$(LIBFT)
-	ar rcs $(NAME) $(SRCS_OBJ) $(CONVS_OBJ) $(LIBFT_OBJ)
+$(NAME): $(SRCS_OBJ) $(LIBFT)
+	$(CC) $(FLAGS) $(SRCS) $(CONVS)
+	ar rcs $(NAME) $(SRCS_OBJ) $(CONVS_OBJ) $(LIBFT)
+
+$(LIBFT):
+	make -C $(LIBFT_DIR)
+	cp $(LIBFT) $(NAME)
 
 clean:
 	rm -f $(SRCS_OBJ) $(CONVS_OBJ) $(LIBFT_OBJ)
+	make clean -C ./libft
 
 fclean: clean
 	rm -f $(NAME) $(NAME:%.a=%_linux.a)
+	make fclean -C ./libft
 
 re: fclean all
 
 linux:
-	$(CC) $(FLAGS) $(SRCS) $(CONVS)	$(LIBFT)
+	make linux -C ./libft
+	cp $(LIBFT:%.a=%_linux.a) $(NAME:%.a=%_linux.a)
+	$(CC) $(FLAGS) $(SRCS) $(CONVS)
 	ar rcs $(NAME:%.a=%_linux.a) $(SRCS_OBJ) $(CONVS_OBJ) $(LIBFT_OBJ)
+
+

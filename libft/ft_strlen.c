@@ -6,11 +6,11 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:41:02 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 23:51:00 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/11/07 19:02:43 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/ft_printf.h"
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {

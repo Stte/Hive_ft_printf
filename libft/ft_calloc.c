@@ -6,11 +6,11 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 13:10:14 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/09 23:50:29 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/11/30 16:45:52 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/ft_printf.h"
+#include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {
