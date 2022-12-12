@@ -5,3 +5,4 @@ a.out
 test_*
 *.o
 *.a
+printfTester
