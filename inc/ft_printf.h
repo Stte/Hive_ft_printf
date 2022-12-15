@@ -6,7 +6,7 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:24:54 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/12 22:45:51 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/15 15:22:52 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include "../libft/libft.h"
+# include "libft.h"
 
 char	*ft_convert_c(int c);
 char	*ft_convert_d(int c);
