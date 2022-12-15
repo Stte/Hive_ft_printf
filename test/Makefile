@@ -6,7 +6,9 @@ LIBFT_TEST = ./test_libft.c
 GNL_TEST = ./test_gnl.c
 FT_PRINTF_TEST = ./test_ft_printf.c
 
-all: setup_failer clean
+.PHONY: all build ft_printf setup_failer malloc_failer clean fclean playground
+
+all: build ft_printf setup_failer clean
 
 build:
 	make -C ../
@@ -16,7 +18,7 @@ ft_printf:
 	./run_ft_printf
 	rm -f test_output
 
-setup_failer:
+setup_failer: fclean
 	sh malloc_failer_setup.sh
 
 malloc_failer:
