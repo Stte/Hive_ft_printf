@@ -4,11 +4,8 @@
 
 int	main(void)
 {
-	printf("+%c %c %c\n", '0', 0, '1');
-	ft_printf("-%c %c %c\n", '0', 0, '1');
-	printf("+%c %c %c\n", '2', '1', 0);
-	ft_printf("-%c %c %c\n", '2', '1', 0);
-	printf("+%c %c %c\n", 0, '1', '2');
-	ft_printf("-%c %c %c\n", 0, '1', '2');
+	int	n;
+	n = ft_printf("%s", "");
+	n = printf("%s", "");
 	return (0);
 }
