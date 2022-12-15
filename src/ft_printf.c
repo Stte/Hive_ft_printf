@@ -6,11 +6,11 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:31:47 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/15 14:50:09 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/15 15:28:56 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "inc/ft_printf.h"
 
 // Checks the character and returns a string based on the conversion.
 static char	*ft_check_char(char c, va_list args)

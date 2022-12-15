@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   convert_d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 19:04:20 by tspoof            #+#    #+#             */
-/*   Updated: 2022/11/06 19:15:05 by tspoof           ###   ########.fr       */
+/*   Created: 2022/12/08 18:13:30 by tspoof            #+#    #+#             */
+/*   Updated: 2022/12/15 15:29:18 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_lstsize(t_list *lst)
+char	*ft_convert_d(int c)
 {
-	int		i;
-	t_list	*tmp;
+	char	*result;
 
-	i = 0;
-	tmp = lst;
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
+	result = ft_itoa(c);
+	return (result);
 }

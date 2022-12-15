@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   convert_p.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 10:36:33 by tspoof            #+#    #+#             */
-/*   Updated: 2022/11/03 15:10:39 by tspoof           ###   ########.fr       */
+/*   Created: 2022/12/02 22:30:38 by tspoof            #+#    #+#             */
+/*   Updated: 2022/12/15 15:29:28 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_convert_p(void *ptr)
 {
-	size_t	n;
+	char	*hex;
+	char	*result;
 
-	n = ft_strlen(src);
-	if (dstsize > 0)
-	{
-		if (n < dstsize)
-			ft_memcpy(dst, src, n + 1);
-		else
-		{
-			ft_memcpy(dst, src, dstsize - 1);
-			dst[dstsize - 1] = '\0';
-		}
-	}
-	return (n);
+	hex = ft_ulongtohex((unsigned long)ptr);
+	if (!hex)
+		return (NULL);
+	result = ft_strjoin("0x", hex);
+	free(hex);
+	return (result);
 }

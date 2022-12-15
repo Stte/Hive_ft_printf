@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   convert_i.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 11:07:09 by tspoof            #+#    #+#             */
-/*   Updated: 2022/11/24 15:13:04 by tspoof           ###   ########.fr       */
+/*   Created: 2022/12/08 18:17:16 by tspoof            #+#    #+#             */
+/*   Updated: 2022/12/15 15:29:23 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_convert_i(int c)
 {
-	int	slen;
-	int	i;
+	char	*result;
 
-	slen = ft_strlen((char *)s);
-	i = 0;
-	while (i < slen + 1)
-	{
-		if (s[i] == (unsigned char)c)
-		{
-			return ((char *)(s + i));
-		}
-		i++;
-	}
-	return (NULL);
+	result = ft_itoa(c);
+	return (result);
 }

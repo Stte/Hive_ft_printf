@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   convert_s.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 13:31:28 by tspoof            #+#    #+#             */
-/*   Updated: 2022/11/16 12:58:06 by tspoof           ###   ########.fr       */
+/*   Created: 2022/12/02 22:30:38 by tspoof            #+#    #+#             */
+/*   Updated: 2022/12/15 15:29:33 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+char	*ft_convert_s(char *str)
 {
-	t_list	*tmp;
-
-	if (!lst)
-		return ;
-	if (!(*lst))
-	{
-		*lst = new;
-		return ;
-	}
-	tmp = *lst;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = new;
+	if (!str || !*str)
+		return (ft_strdup("(null)"));
+	return (ft_strdup(str));
 }

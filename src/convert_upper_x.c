@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   convert_upper_x.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 10:55:44 by tspoof            #+#    #+#             */
-/*   Updated: 2022/10/31 11:01:31 by tspoof           ###   ########.fr       */
+/*   Created: 2022/12/08 16:09:22 by tspoof            #+#    #+#             */
+/*   Updated: 2022/12/15 15:29:42 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c)
+#include "ft_printf.h"
+
+static char	ft_item_to_upper(unsigned int i, char c)
 {
-	if (c >= 'a' && c <= 'z')
-	{
-		return (c - 32);
-	}
-	return (c);
+	(void)i;
+	return (ft_toupper(c));
+}
+
+char	*ft_convert_upper_x(int i)
+{
+	char	*hex;
+	char	*result;
+
+	hex = ft_ulongtohex((unsigned int)i);
+	if (!hex)
+		return (NULL);
+	result = ft_strmapi(hex, ft_item_to_upper);
+	free(hex);
+	return (result);
 }

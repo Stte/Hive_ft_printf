@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   convert_u.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 12:17:37 by tspoof            #+#    #+#             */
-/*   Updated: 2022/11/30 16:45:42 by tspoof           ###   ########.fr       */
+/*   Created: 2022/12/08 22:52:16 by tspoof            #+#    #+#             */
+/*   Updated: 2022/12/15 15:29:38 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_convert_u(unsigned int c)
 {
-	if (n != 0)
-	{
-		ft_memset(s, 0, n);
-	}
+	char	*result;
+
+	result = ft_ltoa(c);
+	return (result);
 }

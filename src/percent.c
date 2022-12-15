@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   percent.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/05 23:53:15 by tspoof            #+#    #+#             */
-/*   Updated: 2022/11/07 18:57:17 by tspoof           ###   ########.fr       */
+/*   Created: 2022/12/08 22:09:38 by tspoof            #+#    #+#             */
+/*   Updated: 2022/12/15 15:29:50 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+char	*ft_percent(void)
 {
-	int	i;
-
-	if (!s || !f)
-		return ;
-	i = 0;
-	while (s[i])
-	{
-		f(i, &s[i]);
-		i++;
-	}
+	return (ft_strdup("%"));
 }

@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   convert_c.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 15:39:15 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/12 17:51:22 by tspoof           ###   ########.fr       */
+/*   Created: 2022/12/02 17:42:33 by tspoof            #+#    #+#             */
+/*   Updated: 2022/12/15 15:29:14 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "ft_printf.h"
+
+char	*ft_convert_c(int c)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	char	*str;
+
+	str = ft_calloc(2, 1);
+	if (!str || !ft_isalnum(c))
+		return (NULL);
+	return (ft_memset(str, c, 1));
 }
