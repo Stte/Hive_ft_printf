@@ -6,16 +6,13 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:17:16 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/15 15:29:23 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/15 21:59:31 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_convert_i(int c)
+int	ft_convert_i(t_vec *result, int c)
 {
-	char	*result;
-
-	result = ft_itoa(c);
-	return (result);
+	return (ft_convert_d(result, c));
 }

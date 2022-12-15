@@ -6,7 +6,7 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:09:22 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/15 15:29:42 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/15 21:54:29 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,27 @@ static char	ft_item_to_upper(unsigned int i, char c)
 	return (ft_toupper(c));
 }
 
-char	*ft_convert_upper_x(int i)
+int	ft_convert_upper_x(t_vec *result, int i)
 {
 	char	*hex;
-	char	*result;
+	t_vec	tmp;
+	int		ret;
+	char	*upper_hex;
 
 	hex = ft_ulongtohex((unsigned int)i);
 	if (!hex)
-		return (NULL);
-	result = ft_strmapi(hex, ft_item_to_upper);
+		return (-1);
+	upper_hex = ft_strmapi(hex, ft_item_to_upper);
 	free(hex);
-	return (result);
+	if (!upper_hex)
+		return (-1);
+	if (vec_from(&tmp, upper_hex, ft_strlen(upper_hex), sizeof(char)) < 0)
+	{
+		free(upper_hex);
+		return (-1);
+	}
+	free(upper_hex);
+	ret = vec_append(result, &tmp);
+	vec_free(&tmp);
+	return (ret);
 }

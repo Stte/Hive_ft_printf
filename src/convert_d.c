@@ -6,16 +6,28 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:13:30 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/15 15:29:18 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/15 21:22:06 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_convert_d(int c)
+int	ft_convert_d(t_vec *result, int c)
 {
-	char	*result;
+	char	*num;
+	t_vec	tmp;
+	int		ret;
 
-	result = ft_itoa(c);
-	return (result);
+	num = ft_itoa(c);
+	if (!num)
+		return (-1);
+	if (vec_from(&tmp, num, ft_strlen(num), sizeof(char)) < 0)
+	{
+		free(num);
+		return (-1);
+	}
+	ret = vec_append(result, &tmp);
+	vec_free(&tmp);
+	free(num);
+	return (ret);
 }

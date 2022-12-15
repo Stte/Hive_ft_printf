@@ -6,100 +6,85 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:31:47 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/15 15:57:19 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/15 21:59:46 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-// Checks the character and returns a string based on the conversion.
-static char	*ft_check_char(char c, va_list args)
+// Does conversion and adds it to result.
+static int	ft_converts_to_result(t_vec *result, char c, va_list args)
 {
 	if (c == 'c')
-		return (ft_convert_c(va_arg(args, int)));
+		return (ft_convert_c(result, va_arg(args, int)));
 	if (c == 's')
-		return (ft_convert_s(va_arg(args, char *)));
+		return (ft_convert_s(result, va_arg(args, char *)));
 	if (c == 'p')
-		return (ft_convert_p(va_arg(args, void *)));
+		return (ft_convert_p(result, va_arg(args, void *)));
 	if (c == 'd')
-		return (ft_convert_d(va_arg(args, int)));
+		return (ft_convert_d(result, va_arg(args, int)));
 	if (c == 'i')
-		return (ft_convert_i(va_arg(args, int)));
+		return (ft_convert_i(result, va_arg(args, int)));
 	if (c == 'u')
-		return (ft_convert_u(va_arg(args, unsigned int)));
+		return (ft_convert_u(result, va_arg(args, unsigned int)));
 	if (c == 'x')
-		return (ft_convert_x(va_arg(args, int)));
+		return (ft_convert_x(result, va_arg(args, int)));
 	if (c == 'X')
-		return (ft_convert_upper_x(va_arg(args, int)));
+		return (ft_convert_upper_x(result, va_arg(args, int)));
 	if (c == '%')
-		return (ft_percent());
-	return (NULL);
-}
-
-// Does conversion and adds it to result.
-static int	ft_converts_to_result(char **result, char *percentage, va_list args)
-{
-	char	*str;
-	char	*tmp;
-
-	str = ft_check_char(*(percentage + 1), args);
-	if (!str)
-		return (0);
-	tmp = ft_strjoin(*result, str);
-	free(str);
-	if (!tmp)
-		return (0);
-	free(*result);
-	*result = tmp;
-	return (1);
+		return (ft_percent(result));
+	return (-1);
 }
 
 // Takes the string part from the string not including % conversions
 // and adds it to result.
-static int	ft_substring_to_result(char **result, int i, const char *str)
+static int	ft_substring_to_result(t_vec *result, int i, const char *str)
 {
 	char	*substr;
-	char	*tmp;
+	t_vec	tmp;
+	int		ret;
 
 	if (i)
 	{
 		substr = ft_substr(str, 0, i);
 		if (!substr)
-			return (0);
-		tmp = ft_strjoin(*result, substr);
+			return (-1);
+		ret = vec_from(&tmp, substr, ft_strlen(substr), sizeof(char));
 		free(substr);
-		if (!tmp)
-			return (0);
-		free(*result);
-		*result = tmp;
+		if (ret < 0)
+			return (-1);
+		ret = vec_append(result, &tmp);
+		vec_free(&tmp);
+		if (ret < 0)
+			return (-1);
 	}
 	return (1);
 }
 
 // Adds the whole string including % conversions to result.
-static int	ft_get_string(char **result, const char *str, va_list args)
+static int	ft_get_string(t_vec *result, const char *str, va_list args)
 {
 	char	*percentage;
 	int		i;
-	char	*tmp;
+	t_vec	tmp;
+	int		ret;
 
 	percentage = ft_strchr(str, '%');
 	while (percentage)
 	{
 		i = (int)(percentage - str);
-		if (!ft_substring_to_result(result, i, str))
-			return (0);
-		if (!ft_converts_to_result(result, percentage, args))
-			return (0);
+		if (ft_substring_to_result(result, i, str) < 0)
+			return (-1);
+		if (ft_converts_to_result(result, *(percentage + 1), args) < 0)
+			return (-1);
 		str = str + (i + 2);
 		percentage = ft_strchr(str, '%');
 	}
-	tmp = ft_strjoin(*result, str);
-	if (!tmp)
-		return (0);
-	free(*result);
-	*result = tmp;
-	return (1);
+	if (vec_from(&tmp, (void *)str, ft_strlen(str), sizeof(char)) < 0)
+		return (-1);
+	ret = vec_append(result, &tmp);
+	vec_free(&tmp);
+	return (ret);
 }
 
 /**
@@ -124,23 +109,20 @@ static int	ft_get_string(char **result, const char *str, va_list args)
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
-	char	*result;
-	int		result_len;
+	t_vec	result;
+	size_t	res_len;
 
 	va_start(args, str);
-	result = ft_calloc(1, 1);
-	if (!result)
+	if (vec_new(&result, 10, sizeof(char)) < 0)
 		return (-1);
-	if (!ft_get_string(&result, str, args))
+	if (ft_get_string(&result, str, args) < 0)
 	{
-		free(result);
-		result = NULL;
+		vec_free(&result);
 		return (-1);
 	}
 	va_end(args);
-	result_len = ft_strlen(result);
-	write(1, result, result_len);
-	free(result);
-	return (result_len);
+	write(1, result.memory, result.len);
+	res_len = result.len;
+	vec_free(&result);
+	return (res_len);
 }
-

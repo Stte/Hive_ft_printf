@@ -6,13 +6,16 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 22:09:38 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/15 15:29:50 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/15 20:07:06 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_percent(void)
+int	ft_percent(t_vec *result)
 {
-	return (ft_strdup("%"));
+	char	c;
+
+	c = '%';
+	return (vec_push(result, &c));
 }
