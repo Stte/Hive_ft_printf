@@ -6,7 +6,7 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:31:47 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/15 21:59:46 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/15 22:31:55 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ static int	ft_get_string(t_vec *result, const char *str, va_list args)
 		str = str + (i + 2);
 		percentage = ft_strchr(str, '%');
 	}
+	if (!*str)
+		return (1);
 	if (vec_from(&tmp, (void *)str, ft_strlen(str), sizeof(char)) < 0)
 		return (-1);
 	ret = vec_append(result, &tmp);
