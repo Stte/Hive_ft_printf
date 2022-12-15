@@ -35,7 +35,9 @@ $(OBJ): | $O
 $(OBJ): $O%.o: $S%
 	$(CC) $(CFLAGS) $< -o $@
 
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(OBJ)
+	@make -C $(LIBFT_DIR)
+	@cp $(LIBFT) $(NAME)
 	$(AR) $(ARFLAGS) $@ $(OBJ)
 
 $(LIBFT):
