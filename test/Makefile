@@ -6,7 +6,7 @@ LIBFT_TEST = ./test_libft.c
 GNL_TEST = ./test_gnl.c
 FT_PRINTF_TEST = ./test_ft_printf.c
 
-all: build ft_printf setup_failer clean
+all: setup_failer clean
 
 build:
 	make -C ../
@@ -20,7 +20,7 @@ setup_failer:
 	sh malloc_failer_setup.sh
 
 malloc_failer:
-	gcc $(FLAGS) $(WRAP) ./main.c ./malloc_failer.c -L.. -lftprintf_linux -o run_ft_printf -o run_test
+	gcc $(FLAGS) $(WRAP) ./main.c ./malloc_failer.c -L.. -lftprintf -o run_test
 	valgrind --leak-check=full --show-leak-kinds=all ./run_test
 
 run_failer:
@@ -31,8 +31,9 @@ clean:
 
 fclean:
 	make fclean -C ..
+	make fclean -C ../libft
 
 playground:
-	make debug -C ..
+	make -C ..
 	gcc $(FLAGS) $(SANITIZE) playground.c -L.. -lftprintf -o run_playground
 	./run_playground
