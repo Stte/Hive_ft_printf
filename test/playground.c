@@ -1,4 +1,4 @@
-#include "../headers/ft_printf.h"
+#include "../inc/ft_printf.h"
 #include <stdio.h>
 #include <unistd.h>
 

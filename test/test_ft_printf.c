@@ -1,7 +1,7 @@
 #include "unity/unity.h"
 #include <fcntl.h>
 #include <unistd.h>
-#include "../headers/ft_printf.h"
+#include "../inc/ft_printf.h"
 
 void setUp(void) {
 }
