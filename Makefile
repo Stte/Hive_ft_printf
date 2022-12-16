@@ -38,7 +38,7 @@ $(OBJ): $O%.o: $S%
 $(NAME): $(OBJ)
 	@make -C $(LIBFT_DIR)
 	@cp $(LIBFT) $(NAME)
-	$(AR) $(ARFLAGS) $@ $(OBJ)
+	$(AR) $(ARFLAGS) $@ $?
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
