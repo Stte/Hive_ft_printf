@@ -1,0 +1,34 @@
+name: submit
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+          submodules: 'true'
+    - name: git user
+      run: |
+          git config user.name github-actions
+          git config user.email tspoof@student.hive.fi
+    - name: checkout
+      run: git checkout -b vog master
+    - name: rm submodule
+      run: |
+          git submodule update
+          git rm --cached libft
+          git rm -r .gitmodules
+          rm -rf libft/.git
+          git add libft
+    - name: rm stuff
+      run: git rm -r .github/ ./test .gitignore README.md
+    - name: commit & push
+      run: |
+          git commit -m "submit setup"
+          git push --force origin vog
