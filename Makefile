@@ -3,9 +3,10 @@ NAME 		= libftprintf.a
 S			= src/
 O			= obj/
 I			= inc/
+LIBFT_I		= libft/inc
 
 CC			= cc
-CFLAGS		= -Wall -Werror -Wextra -c -I$I
+CFLAGS		= -Wall -Werror -Wextra -c -I$I -I$(LIBFT_I)
 
 AR			= ar
 ARFLAGS		= rcs

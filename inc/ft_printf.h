@@ -6,7 +6,7 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:24:54 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/15 18:38:49 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/19 15:07:44 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "../libft/inc/libft.h"
+# include "libft.h"
 
 int	ft_convert_c(t_vec *result, int c);
 int	ft_convert_d(t_vec *result, int c);
