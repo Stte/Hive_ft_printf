@@ -6,11 +6,11 @@
 /*   By: tspoof <tspoof@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:31:47 by tspoof            #+#    #+#             */
-/*   Updated: 2022/12/16 15:06:10 by tspoof           ###   ########.fr       */
+/*   Updated: 2022/12/23 17:44:15 by tspoof           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "ft_printf.h"
 
 // Does conversion and adds it to result.
 static int	ft_converts_to_result(t_vec *result, char c, va_list args)
