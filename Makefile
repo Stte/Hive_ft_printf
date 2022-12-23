@@ -19,7 +19,7 @@ $S/ft_printf.c
 OBJ			= $(SRC:$S%=$O%.o)
 
 RM			= /bin/rm -f
-RMDIR		= /bin/rmdir
+RMDIR		= /bin/rm -rf
 
 LIBFT_DIR	= ./libft
 LIBFT		= $(LIBFT_DIR)/libft.a
@@ -45,10 +45,7 @@ $(LIBFT):
 	make -C $(LIBFT_DIR)
 	cp $(LIBFT) $(NAME)
 
-cleanobj:
-	$(RM) $(wildcard $(OBJ))
-
-cleanobjdir: cleanobj
+cleanobjdir: $O
 	$(RMDIR) $O
 
 clean: cleanobjdir
