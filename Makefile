@@ -53,4 +53,6 @@ clean: cleanobjdir
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re:
+	@make fclean
+	@make all
