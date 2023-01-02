@@ -1,8 +1,0 @@
-.vscode
-*.dSYM
-run_*
-a.out
-test_*
-*.o
-*.a
-printfTester
